@@ -1,0 +1,255 @@
+:root {
+    --col-primary: #24242e;
+    --col-secondary: #30343f;
+    --col-accent: #f8f8f8;
+    --col-alternate: #c0b3a0;
+}
+
+html {
+    color: var(--col-accent);
+}
+
+body {
+    background: var(--col-primary);
+}
+
+*, *:before, *:after {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+body:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -99;
+    background-position: center;
+    background-size: cover;
+}
+
+.glass-morphic {
+    background: rgba(10, 10, 10, .05);
+    box-shadow: 0 4px 8px 0 rgba(10, 10, 10, 0.4);
+    border-radius: var(--border-radius-override, 10px);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+    .glass-morphic {
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+}
+
+.nav-wrapper {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-wrapper {
+    padding: .5rem;
+}
+
+.logo {
+    width: 40px;
+}
+
+.toggle-menu {
+    aspect-ratio: 1;
+    padding: .5rem;
+    z-index: 99;
+    transition: transform ease-in-out 300ms;
+}
+
+.nav-wrapper[data-menu-toggled="true"] .toggle-menu {
+    transform: rotateY(180deg);
+}
+
+.toggle-menu > img {
+    width: 40px;
+    transition: opacity cubic-bezier(1, 0, 0, 1) 300ms;
+}
+
+.open-menu {
+    position: absolute;
+}
+
+.nav-wrapper[data-menu-toggled="false"] .close-menu {
+    opacity: 0;
+}
+
+.nav-wrapper[data-menu-toggled="true"] .open-menu {
+    opacity: 0;
+}
+
+.menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    z-index: 98;
+    display: flex;
+    transition: left ease-out 400ms;
+}
+
+.nav-wrapper[data-menu-toggled="true"] .menu-wrapper {
+    left: 0;
+}
+
+#menu-close {
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.menu {
+    --border-radius-override: 0;
+    width: min(400px, calc(100% - (3rem + 40px)));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.menu > li {
+    font-size: 1.3rem;
+    line-height: 2.5;
+    display: flex;
+}
+
+.menu > li:not(:last-child) {
+    border-bottom: 1px solid var(--col-accent);
+}
+
+.menu > li > a {
+    flex-grow: 1;
+    padding-left: .5rem;
+    transition: padding-left ease-in-out 200ms;
+}
+
+.menu > li > a:hover {
+    padding-left: 1rem;
+}
+
+@media (min-width: 800px) {
+    .toggle-menu {
+        display: none;
+    }
+
+    #menu-close {
+        display: none;
+    }
+
+    .menu-wrapper {
+        display: block !important;
+        position: relative;
+        left: 0;
+        transition: none;
+        width: auto;
+    }
+
+    .menu {
+        --border-radius-override: 10px;
+        flex-direction: row;
+        gap: 1.2rem;
+        padding: .5rem 1rem;
+        width: auto;
+    }
+
+    .menu > li:not(:last-child) {
+        border-bottom: none;
+    }
+
+    .menu > li > a {
+        padding-left: 0;
+        line-height: 1.4;
+        padding-top: .2rem;
+        padding-bottom: .05rem;
+        transition: padding-top ease-in-out 100ms, padding-bottom ease-in-out 100ms;
+    }
+
+    .menu > li > a:hover {
+        padding-left: 0;
+        padding-top: .05rem;
+        padding-bottom: .2rem;
+    }
+}
+
+.page-title {
+    text-align: center;
+    margin: 25vh 0;
+    font-size: 3.5rem;
+}
+
+.tags-wrapper {
+    --border-radius-override: 0;
+    padding: .5rem;
+    border-left: none;
+    border-right: none;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.tags > li {
+    background-color: var(--col-alternate);
+    color: var(--col-primary);
+    padding: .2rem .5rem;
+    border-radius: .3rem;
+}
+
+.footer-wrapper {
+    background-color: var(--col-primary);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.footer-wrapper h3 {
+    line-height: 2;
+}
+
+.footer-wrapper li {
+    line-height: 1.5;
+}
+
+.signature-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.signature {
+    width: clamp(100px, 20vw, 200px);
+}
+
+.main {
+    --border-radius-override: 0;
+    border: none;
+    padding: 5vh 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1150px) {
+    .main {
+        padding: 3rem;
+        margin: 5vh auto;
+    }
+}
