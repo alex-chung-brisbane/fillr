@@ -58,7 +58,53 @@
 </header>
 
 <section class="main glass-morphic">
-    <!--TODO: Add project code here.-->
+    <h2>How to use?</h2>
+    <ol>
+        <li>
+            <p>Create a template for repetitive lines you need to write, mark the wildcards (variables) with the ` (grave accent) character</p>
+            <p>For example, copy the following into the <b>Template</b> box:</p>
+            <p><code>&lt;li&gt;Hello there, `first_name`. `greeting`&lt;/li&gt;</code></p>
+        </li>
+        <li>
+            <p>Add a newline after inserting the above into the <b>Template</b> box (for a cleaner output)</p>
+        </li>
+        <li>
+            <p>Type a user's name into the <b>Set highlighted value to...</b> box and press <b>Insert value</b></p>
+            <p>Follow this up with a greeting, such as <i>How are you?</i></p>
+        </li>
+        <li>
+            <p>Repeat step 3 a few times with different names and greetings</p>
+        </li>
+        <li>
+            <p>Review the <b>Output</b> box for your generated content</p>
+        </li>
+    </ol>
+</section>
+
+<section class="main glass-morphic">
+    <h2>Tool</h2>
+    <fieldset class="input-form">
+        <div class="template">
+            <label for="template">Template (use: `var_name`)</label>
+            <textarea name="template" id="template"
+                      placeholder="Surround your variables with `, you can use any characters: A-Z, a-z, 0-9 or _ without spaces."></textarea>
+        </div>
+        <div class="variables">
+            <label for="variables">Variables</label>
+            <select name="Variables" id="variables" size="2" disabled>
+                <option value="">Use ` to surround your vars in template text - e.g. `var_name`</option>
+            </select>
+        </div>
+        <div class="value">
+            <label for="value">Set highlighted value to...</label>
+            <input type="text" name="value" id="value" placeholder="Value to insert">
+            <button id="submit">Insert value [Enter]</button>
+        </div>
+        <div class="output">
+            <label for="output">Output</label>
+            <textarea name="output" id="output" placeholder="Code will appear here as you enter values."></textarea>
+        </div>
+    </fieldset>
 </section>
 
 <footer class="footer-wrapper">

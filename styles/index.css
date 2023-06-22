@@ -1,3 +1,73 @@
 body:before {
     background-image: url("../resources/backgrounds/option-2.jpg");
 }
+
+.main > h2 {
+    margin-bottom: 2%;
+}
+
+.input-form {
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-form textarea {
+    min-height: 10vh;
+    background-color: var(--col-secondary);
+    color: var(--col-accent);
+    resize: vertical;
+}
+
+#variables {
+    width: 100%;
+    min-height: 10vh;
+    background-color: var(--col-accent);
+}
+
+#value {
+    background: var(--col-secondary);
+    padding: .3rem;
+    border: none;
+    border-bottom: 2px solid var(--col-alternate);
+    font-size: 1rem;
+    color: var(--col-accent);
+}
+
+#submit {
+    margin-top: 2rem;
+    background: var(--col-alternate);
+    color: var(--col-primary);
+    border: none;
+    font-size: 1.2rem;
+    padding: .3rem 1rem;
+}
+
+@media (min-width: 700px) {
+    .input-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 1rem;
+        grid-auto-flow: row;
+        grid-template-areas:
+            "template variables"
+            "output value";
+    }
+
+    .template { grid-area: template; }
+
+    .output { grid-area: output; }
+
+    .variables { grid-area: variables; }
+
+    .value { grid-area: value; }
+
+}
